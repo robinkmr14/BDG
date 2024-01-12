@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/210a6adb7c.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+}
+
+.main-sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+  padding-bottom: 357px;
+  width: 420px;
+  background-color: #292929;
+}
+
+.sec-main {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  height: fit-content;
+  background-color: #3f3f3f;
+  /* height: fit-content; */
+}
+.main-color {
+  margin-top: 10px;
+}
+
+.main-color img {
+  cursor: pointer;
+}
+
+.main-color img {
+  display: flex;
+  width: 400px;
+  margin: auto;
+  border-radius: 10px;
+}
+
+#colorDiv {
+  display: flex;
+  margin: auto;
+  color: #ddb96b;
+}
+
+#colorDiv h1 {
+  margin-top: 10px;
+}
+
+
+.logo-img img {
+  margin-top: -10px;
+  width: 150px;
+}
+
+.logo-img p {
+  color: #ddb96b;
+  margin-left: 25px;
+}
+
+.d-icon {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10px;
+  padding: 10px;
+  gap: 10px;
+  background-color: #ddb96b;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.d-icon i {
+  font-size: 25px;
+  color: #292929;
+}
+
+.seco-main {
+  background-color: #292929;
+}
+
+.wingo img {
+  width: 130px;
+  cursor: pointer;
+}
+
+.color-pred {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.period-no {
+  margin-top: 20px;
+}
+
+.period-no input {
+  display: flex;
+  margin: auto;
+  width: 400px;
+  height: 35px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #3F3F3F;
+}
+
+.period-no input::placeholder {
+    padding: 10px;
+    font-weight: bold;
+}
+
+.show-result {
+    display: flex;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.show-result button {
+    background-color: #ddb96b;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+    </style>
+  </head>
+  <body>
+    <div class="main-sec">
+      <div class="sec-main">
+        <div class="logo-img">
+          <img src="images/bdg-logo.png" alt="" />
+        </div>
+        <div>
+          <div class="d-icon">
+            <i class="fa-regular fa-circle-down"></i>
+            <span>Download App</span>
+          </div>
+          <div class="d-icon">
+            <i class="fa-regular fa-circle-down"></i>
+            <span>Customer Service</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="colorDiv">
+        <h1></h1>
+      </div>
+      <div class="period-no">
+        <input type="tel"  id="periodInput" placeholder="Enter last three digits Period Number...">
+      </div>
+
+      <div class="show-result">
+        <button type="button" onclick="generateSize()">Show Result</button>
+      </div>
+
+      </div>
+    </div>
+  </body>
+
+  
+  <script>
+    let previousInputValue = "";
+  
+    function generateSize() {
+      const periodInput = document.getElementById("periodInput");
+      const sizeDiv = document.getElementById("colorDiv");
+  
+      let inputValue = periodInput.value;
+
+      // Restrict input to three digits
+      inputValue = inputValue.slice(0, 3);
+      periodInput.value = inputValue;
+      
+        if (/^\d+$/.test(inputValue)) {
+          // Input is a valid number
+          if (inputValue !== previousInputValue) {
+            // Generate a new size only if the input value has changed
+            const sizes = ["Big", "Small"];
+            const randomSizeIndex = Math.floor(Math.random() * sizes.length);
+            const randomSize = sizes[randomSizeIndex];
+            sizeDiv.innerHTML = `<h1>${randomSize}</h1>`;
+            // Update the previous input value
+            previousInputValue = inputValue;
+          }
+        } else {
+          // Input is not a valid number
+          alert("Please enter a valid period number (digits only).");
+        }
+      
+    }
+</script>
+
+  
+
+
+</html>
